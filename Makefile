@@ -6,7 +6,7 @@
 #    By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 13:09:18 by Edwin ANNE        #+#    #+#              #
-#    Updated: 2025/01/12 15:29:18 by Edwin ANNE       ###   ########.fr        #
+#    Updated: 2025/01/16 22:05:10 by Edwin ANNE       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ MLX = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext
 
 # Sources files
-_SRCS = main.c game.c
+_SRCS = main.c game.c verif.c utils.c insert.c flood_fill.c
 GNL_SRCS = get_next_line.c get_next_line_utils.c
 SRCS = $(addprefix $(SRC_DIR)/, $(_SRCS)) \
        $(addprefix $(SRC_DIR)/gnl/, $(GNL_SRCS))

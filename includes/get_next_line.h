@@ -6,13 +6,14 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:48:57 by eanne             #+#    #+#             */
-/*   Updated: 2025/01/11 21:47:49 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/13 15:17:11 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 
