@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:54:30 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/19 11:06:41 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/19 20:17:14 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,34 @@ int check_map(char *filepath)
 int main(int argc, char **argv)
 {
     t_map map;
+    t_game *game;
     
     if (argc != 2)
         return (1);
     if (!check_map(argv[1]))
     {
-        write(1, "La map n'est pas valide\n", 24);
-        return (0);
+        printf("error\n");
+        return (1);
     }
-    else
-    {
-        printf("ok");
-    }
-    
+    game = malloc(sizeof(t_game));
+    if (!game)
+        return (1);
+    ft_memset(game, 0, sizeof(t_game));
     ft_memset(&map, 0, sizeof(t_map));
     map = insert_map(argv[1], map);
     map = copy_map(map);
     
     if (!map.table || !map.copied)
-        return (0);
+    {
+        free(game);
+        return (1);
+    }
+
+    if (start_game(game, map))
+    {
+        free(game);
+        return (1);
+    }
+    
     return (0);
 }

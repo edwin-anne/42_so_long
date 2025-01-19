@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:42:20 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/19 10:55:46 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/18 14:46:15 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	find_start(t_map *map)
 		}
 		y++;
 	}
+	printf("Error: No starting position found in map\n");
 	return (0);
 }
 

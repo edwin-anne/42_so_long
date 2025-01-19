@@ -22,6 +22,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+# define KEY_EXIT		17
+
 typedef struct s_map {
     char **table;
     char **copied;
@@ -37,6 +39,11 @@ typedef struct s_map {
 typedef struct s_game {
     void    *mlx;
     void    *win;
+    void    *img_1;
+    void    *img_0;
+    void    *img_c;
+    void    *img_e;
+    void    *img_p;
     int     width;
     int     height;
 }   t_game;
@@ -47,8 +54,13 @@ typedef struct s_item_counter {
     int count_c;
 }   t_item_counter;
 
-int start_game(t_game *game);
-int handle_mouse(int button, int x, int y, void *param);
+/*#########  GAME  #########*/
+int start_game(t_game *game, t_map map);
+
+/*#########  GAME UTILS  #########*/
+t_game *size_window(t_game *game, t_map map);
+t_game *upload_img(t_game *game);
+void render_map(t_game *game, t_map map);
 
 /*#########  VERIF  #########*/
 int character_verif(char *verif, t_item_counter *map_count);
@@ -73,6 +85,10 @@ int count_line(char *filepath);
 void print_map(char **map);
 t_map copy_map(t_map map);
 size_t	ft_strlen_map(const char *s);
+
+/*#########  FREE  #########*/
+int	free_map(t_game *game);
+int	free_exit(t_game *game);
 
 void	ft_player_position(t_map *data);
 
