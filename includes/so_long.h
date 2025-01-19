@@ -41,14 +41,21 @@ typedef struct s_game {
     int     height;
 }   t_game;
 
+typedef struct s_item_counter {
+    int count_e;
+    int count_p;
+    int count_c;
+}   t_item_counter;
+
 int start_game(t_game *game);
 int handle_mouse(int button, int x, int y, void *param);
 
 /*#########  VERIF  #########*/
-int character_verif(char *verif);
+int character_verif(char *verif, t_item_counter *map_count);
 int game_size_verif(char *verif, int back_size);
 int map_closed(char *verif, int edge);
 int is_start_or_end(int position, int total_lines);
+int verif_item_doublon(t_item_counter *map_count);
 
 /*#########  INSERT  #########*/
 t_map init_map(char *filepath, t_map map, int *fd);
@@ -65,6 +72,7 @@ int flood_fill_init(t_map *data);
 int count_line(char *filepath);
 void print_map(char **map);
 t_map copy_map(t_map map);
+size_t	ft_strlen_map(const char *s);
 
 void	ft_player_position(t_map *data);
 
