@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 20:03:47 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 17:31:10 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 17:57:50 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,11 @@ int	free_map(t_game *game)
 	}
 	if (game->mlx)
 	{
+		write(1, "h", 1);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 		game->mlx = NULL;
+		write(1, "h", 1);
 	}
 	return (0);
 }
@@ -96,5 +98,6 @@ int	free_exit(t_game *game)
 	i = 0;
 	free_map(game);
 	free_map_table(game, i);
-	return(0);
+	write(1, "h", 1);
+	exit(0);
 }

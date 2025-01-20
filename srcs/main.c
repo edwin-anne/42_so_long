@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:54:30 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 16:03:37 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 17:51:00 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,16 @@ int main(int argc, char **argv)
 	if (!game)
 	{
 		if (game->table)
-			free_map_table(game);
+			free_map_table(game, 1);
 		return (1);
 	}
-	if (start_game(game))
-	{
-		free_map_table(game);
-		free(game);
-		return (1);
-	}
-	
-	return (0);
+	// if (start_game(game))
+	// {
+	// 	// free_map_table(game);
+	// 	// free(game);
+	// 	// return (1);
+	// }
+	start_game(game);
+	mlx_loop(game->mlx);
+	// return (0);
 }

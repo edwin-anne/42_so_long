@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:09:55 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 16:21:26 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 17:51:23 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	start_game(t_game *game)
 		return (free_map(game));
 	render_map(game);
 	mlx_hook(game->win, KEY_EXIT, 0, free_exit, game);
-	mlx_loop(game->mlx);
-	return (0);
+	// mlx_loop(game->mlx);
+	return (1);
 }
