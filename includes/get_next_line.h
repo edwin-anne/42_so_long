@@ -6,25 +6,25 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:48:57 by eanne             #+#    #+#             */
-/*   Updated: 2025/01/13 15:17:11 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 16:05:03 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include "libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 50
 # endif
 
-char	*get_next_line(int fd);
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <stdio.h>
 
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_free(void *var);
+char	*get_next_line(int fd);
+int		ft_gnlchr(char *stocker);
+char	*ft_gnljoin(char *newline, char *stocker);
+char	*ft_gnlclean(char *stocker);
 
 #endif

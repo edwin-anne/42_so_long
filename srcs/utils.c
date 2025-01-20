@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:21:58 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/19 11:00:49 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 16:51:03 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	count_line(char *filepath)
 	while (read != NULL)
 	{
 		i++;
+		free(read);
 		read = get_next_line(fd);
 	}
+	free(read);
 	close(fd);
 	return (i);
 }
@@ -61,32 +63,32 @@ void	print_map(char **map)
 	}
 }
 
-t_map	copy_map(t_map map)
+t_game	*copy_map(t_game *map)
 {
 	int	i;
 	int	size;
 
 	i = 0;
-	if (!map.table)
+	if (!map->table)
 		return (map);
-	size = map_size(map.table);
-	map.copied = malloc((size + 1) * sizeof(char *));
-	if (!map.copied)
+	size = map_size(map->table);
+	map->copied = malloc((size + 1) * sizeof(char *));
+	if (!map->copied)
 		return (map);
 	while (i < size)
 	{
-		map.copied[i] = ft_strdup(map.table[i]);
-		if (!map.copied[i])
+		map->copied[i] = ft_strdup(map->table[i]);
+		if (!map->copied[i])
 		{
 			while (--i >= 0)
-				free(map.copied[i]);
-			free(map.copied);
-			map.copied = NULL;
+				free(map->copied[i]);
+			free(map->copied);
+			map->copied = NULL;
 			return (map);
 		}
 		i++;
 	}
-	map.copied[size] = NULL;
+	map->copied[size] = NULL;
 	return (map);
 }
 

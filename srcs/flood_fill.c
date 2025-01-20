@@ -6,13 +6,13 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:42:20 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/18 14:46:15 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 13:07:14 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_items(t_map *data)
+int	count_items(t_game *data)
 {
 	int	y;
 	int	x;
@@ -40,7 +40,7 @@ int	count_items(t_map *data)
 	return (count);
 }
 
-void	flood_fill(t_map *data, int y, int x)
+void	flood_fill(t_game *data, int y, int x)
 {
 	if (y < 0 || x < 0 || y >= data->size_y || x >= data->size_x)
 	{
@@ -66,7 +66,7 @@ void	flood_fill(t_map *data, int y, int x)
 	flood_fill(data, y, x - 1);
 }
 
-int	find_start(t_map *map)
+int	find_start(t_game *map)
 {
 	int	y;
 	int	x;
@@ -95,7 +95,7 @@ int	find_start(t_map *map)
 	return (0);
 }
 
-int	flood_fill_init(t_map *data)
+int	flood_fill_init(t_game *data)
 {
 	if (!data || !data->table || !data->copied)
 		return (0);
