@@ -45,11 +45,11 @@ typedef struct s_game {
     int total_items;
 }   t_game;
 
-typedef struct s_item_counter {
+typedef struct s_count {
     int count_e;
     int count_p;
     int count_c;
-}   t_item_counter;
+}   t_count;
 
 /*#########  GAME  #########*/
 int start_game(t_game *game);
@@ -61,11 +61,14 @@ void	render_map(t_game *game);
 void	render_map_item(t_game *g, int x, int y);
 
 /*#########  VERIF  #########*/
-int character_verif(char *verif, t_item_counter *map_count);
+int character_verif(char *verif, t_count *map_count);
 int game_size_verif(char *verif, int back_size);
 int map_closed(char *verif, int edge);
 int is_start_or_end(int position, int total_lines);
-int verif_item_doublon(t_item_counter *map_count);
+int verif_item_doublon(t_count *map_count);
+
+/*#########  VERIF2  #########*/
+int check_map(char *filepath);
 
 /*#########  INSERT  #########*/
 t_game	*init_map(char *filepath, t_game *map, int *fd);

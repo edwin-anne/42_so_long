@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:36:14 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/19 10:58:11 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/20 18:37:04 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //Cette fonction parcours le fichier pour regarder si les caracteres 
 //present dans le fichier sont bien des valeurs de map
-int	character_verif(char *verif, t_item_counter *map_count)
+int	character_verif(char *verif, t_count *map_count)
 {
 	int	i;
 
@@ -89,7 +89,7 @@ int	is_start_or_end(int position, int total_lines)
 	return (0);
 }
 
-int	verif_item_doublon(t_item_counter *map_count)
+int	verif_item_doublon(t_count *map_count)
 {
 	if (map_count->count_e != 1)
 		return (0);
