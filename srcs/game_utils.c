@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 12:53:20 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 16:38:51 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/22 10:03:34 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_game	*upload_img(t_game *game)
 	return (game);
 }
 
-void	render_map(t_game *g)
+int	render_map(t_game *g)
 {
 	int	y;
 	int	x;
@@ -57,6 +57,7 @@ void	render_map(t_game *g)
 		}
 		y++;
 	}
+	return (0);
 }
 
 void	render_map_item(t_game *g, int x, int y)

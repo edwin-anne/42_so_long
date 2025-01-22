@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:09:55 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 18:32:58 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/22 10:02:46 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	start_game(t_game *game)
 	if (!game)
 		return (free_map(game));
 	render_map(game);
+	mlx_loop_hook(game->mlx, render_map, game);
 	mlx_hook(game->win, KEY_EXIT, 0, free_exit, game);
 	return (1);
 }

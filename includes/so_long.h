@@ -57,7 +57,7 @@ int start_game(t_game *game);
 /*#########  GAME UTILS  #########*/
 t_game *size_window(t_game *game);
 t_game *upload_img(t_game *game);
-void	render_map(t_game *game);
+int	render_map(t_game *g);
 void	render_map_item(t_game *g, int x, int y);
 
 /*#########  VERIF  #########*/
