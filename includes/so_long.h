@@ -22,7 +22,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# define KEY_EXIT		17
+# define KEY_EXIT			17
+# define KEY_ESC        	65307
+# define KEY_W          	119
+# define KEY_A          	97
+# define KEY_S          	115
+# define KEY_D          	100
+# define KEY_UP         	65362
+# define KEY_LEFT       	65361
+# define KEY_DOWN       	65364
+# define KEY_RIGHT      	65363
+# define WINDOW_EXIT		17
 
 typedef struct s_game {
     void    *mlx;
@@ -53,6 +63,8 @@ typedef struct s_count {
 
 /*#########  GAME  #########*/
 int start_game(t_game *game);
+int	ft_key_hook(int keycode, t_game *game);
+void	ft_move(t_game *game, char axis, int dir);
 
 /*#########  GAME UTILS  #########*/
 t_game *size_window(t_game *game);
@@ -91,6 +103,9 @@ size_t	ft_strlen_map(const char *s);
 int	free_map(t_game *game);
 int	free_exit(t_game *game);
 void	free_map_table(t_game *map, int i);
+
+/*#########  GAME  #########*/
+void	ft_move(t_game *game, char axis, int dir);
 
 void	ft_player_position(t_game *data);
 

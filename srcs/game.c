@@ -6,11 +6,29 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:09:55 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/22 10:02:46 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/25 20:24:04 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_key_hook(int keycode, t_game *game)
+{
+	if (keycode == KEY_ESC)
+		free_exit(game);
+	else if (keycode == KEY_W || keycode == KEY_UP)
+		ft_move(game, 'y', -1);
+	else if (keycode == KEY_A || keycode == KEY_LEFT)
+		ft_move(game, 'x', -1);
+	else if (keycode == KEY_S || keycode == KEY_DOWN)
+		ft_move(game, 'y', 1);
+	else if (keycode == KEY_D || keycode == KEY_RIGHT)
+		ft_move(game, 'x', 1);
+	print_map(game->table);
+	mlx_clear_window(game->mlx, game->win);
+	render_map(game);
+	return (0);
+}
 
 int	start_game(t_game *game)
 {
@@ -29,7 +47,5 @@ int	start_game(t_game *game)
 	if (!game)
 		return (free_map(game));
 	render_map(game);
-	mlx_loop_hook(game->mlx, render_map, game);
-	mlx_hook(game->win, KEY_EXIT, 0, free_exit, game);
 	return (1);
 }
