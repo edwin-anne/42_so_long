@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 20:16:54 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/25 23:02:42 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/25 23:39:29 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	modify_map(t_game *game, int new_x, int new_y)
 	if (game->table[new_y][new_x] == 'C')
 	{
 		game->items_collected++;
-		printf("\rItems collected: %d/%d",
-			game->items_collected, game->total_items);
 	}
 	else if (game->table[new_y][new_x] == 'E')
 	{
@@ -74,5 +72,20 @@ void	move(t_game *game, char axis, int dir)
 		|| new_y >= game->size_y || new_x >= game->size_x)
 		return ;
 	if (game->table[new_y][new_x] != '1')
+	{
 		modify_map(game, new_x, new_y);
+		if (game->table[new_y][new_x] != 'E')
+			game->move_counter++;
+		write_status(game);
+	}
+}
+
+void	write_status(t_game *game)
+{
+	write(1, "\rMove counter: ", 15);
+	ft_putnbr_fd(game->move_counter, 1);
+	write(1, " // Items collected: ", 21);
+	ft_putnbr_fd(game->items_collected, 1);
+	write(1, "/", 1);
+	ft_putnbr_fd(game->total_items, 1);
 }
