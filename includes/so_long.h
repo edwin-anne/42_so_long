@@ -84,8 +84,10 @@ int check_map(char *filepath);
 
 /*#########  INSERT  #########*/
 t_game	*init_map(char *filepath, t_game *map, int *fd);
-void fill_map(int fd, t_game *game);
-t_game *insert_map(char *filepath, t_game *game);
+void	fill_map(int fd, t_game *game);
+t_game	*insert_map(char *filepath, t_game *game);
+int		count_collectibles(t_game *game);
+int	count_collectibles(t_game *game);
 
 /*#########  FLOOD FILL  #########*/
 void	flood_fill(t_game *data, int y, int x);
@@ -104,8 +106,9 @@ int	free_map(t_game *game);
 int	free_exit(t_game *game);
 void	free_map_table(t_game *map, int i);
 
-/*#########  GAME  #########*/
+/*#########  MOVE  #########*/
 void	ft_move(t_game *game, char axis, int dir);
+void ft_modify_map(t_game *game, int new_x, int new_y);
 
 void	ft_player_position(t_game *data);
 

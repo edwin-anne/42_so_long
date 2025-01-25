@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:54:30 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/25 20:10:27 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/25 20:49:48 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	start_game(game);
-	mlx_hook(game->win, 2, 1L<<0, ft_key_hook, game);
+	mlx_hook(game->win, 2, 1L, ft_key_hook, game);
 	mlx_hook(game->win, 17, 0, free_exit, game);
 	mlx_loop(game->mlx);
 }

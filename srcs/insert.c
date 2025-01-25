@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:10:47 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 13:22:39 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/25 20:44:34 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,28 @@ void	fill_map(int fd, t_game *map)
 	map->table[y] = NULL;
 }
 
+int	count_collectibles(t_game *game)
+{
+	int	count;
+	int	i;
+	int	j;
+
+	count = 0;
+	i = 0;
+	while (i < game->size_y)
+	{
+		j = 0;
+		while (j < game->size_x)
+		{
+			if (game->table[i][j] == 'C')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
 t_game	*insert_map(char *filepath, t_game *map)
 {
 	int	fd;
@@ -78,5 +100,7 @@ t_game	*insert_map(char *filepath, t_game *map)
 		return (map);
 	fill_map(fd, map);
 	close(fd);
+	map->items_collected = 0;
+	map->total_items = count_collectibles(map);
 	return (map);
 }
