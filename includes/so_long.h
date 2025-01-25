@@ -62,54 +62,52 @@ typedef struct s_count {
 }   t_count;
 
 /*#########  GAME  #########*/
-int start_game(t_game *game);
-int	ft_key_hook(int keycode, t_game *game);
-void	ft_move(t_game *game, char axis, int dir);
+int     start_game(t_game *game);
+int     ft_key_hook(int keycode, t_game *game);
 
 /*#########  GAME UTILS  #########*/
-t_game *size_window(t_game *game);
-t_game *upload_img(t_game *game);
-int	render_map(t_game *g);
-void	render_map_item(t_game *g, int x, int y);
+t_game  *size_window(t_game *game);
+t_game  *upload_img(t_game *game);
+int     render_map(t_game *g);
+void    render_map_item(t_game *g, int x, int y);
 
 /*#########  VERIF  #########*/
-int character_verif(char *verif, t_count *map_count);
-int game_size_verif(char *verif, int back_size);
-int map_closed(char *verif, int edge);
-int is_start_or_end(int position, int total_lines);
-int verif_item_doublon(t_count *map_count);
+int     character_verif(char *verif, t_count *map_count);
+int     game_size_verif(char *verif, int back_size);
+int     map_closed(char *verif, int edge);
+int     is_start_or_end(int position, int total_lines);
+int     verif_item_doublon(t_count *map_count);
 
 /*#########  VERIF2  #########*/
-int check_map(char *filepath);
+int     check_map(char *filepath);
 
 /*#########  INSERT  #########*/
-t_game	*init_map(char *filepath, t_game *map, int *fd);
-void	fill_map(int fd, t_game *game);
-t_game	*insert_map(char *filepath, t_game *game);
-int		count_collectibles(t_game *game);
-int	count_collectibles(t_game *game);
+t_game  *init_map(char *filepath, t_game *map, int *fd);
+void    fill_map(int fd, t_game *game);
+t_game  *insert_map(char *filepath, t_game *game);
+int     count_collectibles(t_game *game);
+int     count_collectibles(t_game *game);
 
 /*#########  FLOOD FILL  #########*/
-void	flood_fill(t_game *data, int y, int x);
-int count_items(t_game *data);
-int find_start(t_game *map);
-int flood_fill_init(t_game *data);
+void    flood_fill(t_game *data, int y, int x);
+int     count_items(t_game *data);
+int     find_start(t_game *map);
+int     flood_fill_init(t_game *data);
 
 /*#########  UTILS  #########*/
-int count_line(char *filepath);
-void print_map(char **map);
-t_game *copy_map(t_game *map);
-size_t	ft_strlen_map(const char *s);
+int     count_line(char *filepath);
+void    print_map(char **map);
+t_game  *copy_map(t_game *map);
+size_t  ft_strlen_map(const char *s);
 
 /*#########  FREE  #########*/
-int	free_map(t_game *game);
-int	free_exit(t_game *game);
+int	    free_map(t_game *game);
+int	    free_exit(t_game *game);
 void	free_map_table(t_game *map, int i);
 
 /*#########  MOVE  #########*/
-void	ft_move(t_game *game, char axis, int dir);
-void ft_modify_map(t_game *game, int new_x, int new_y);
-
-void	ft_player_position(t_game *data);
+void	move(t_game *game, char axis, int dir);
+void    modify_map(t_game *game, int new_x, int new_y);
+void	player_position(t_game *data);
 
 #endif

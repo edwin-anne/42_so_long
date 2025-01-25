@@ -6,13 +6,13 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 20:16:54 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/25 23:00:25 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/25 23:02:42 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_find_player(t_game *game, int *x, int *y)
+void	find_player(t_game *game, int *x, int *y)
 {
 	*y = 0;
 	while (*y < game->size_y)
@@ -28,12 +28,12 @@ void	ft_find_player(t_game *game, int *x, int *y)
 	}
 }
 
-void	ft_modify_map(t_game *game, int new_x, int new_y)
+void	modify_map(t_game *game, int new_x, int new_y)
 {
 	int	current_x;
 	int	current_y;
 
-	ft_find_player(game, &current_x, &current_y);
+	find_player(game, &current_x, &current_y);
 	if (game->table[new_y][new_x] == 'C')
 	{
 		game->items_collected++;
@@ -54,7 +54,7 @@ void	ft_modify_map(t_game *game, int new_x, int new_y)
 	game->table[new_y][new_x] = 'P';
 }
 
-void	ft_move(t_game *game, char axis, int dir)
+void	move(t_game *game, char axis, int dir)
 {
 	int	new_x;
 	int	new_y;
@@ -63,7 +63,7 @@ void	ft_move(t_game *game, char axis, int dir)
 
 	if (!game || !game->table)
 		return ;
-	ft_find_player(game, &current_x, &current_y);
+	find_player(game, &current_x, &current_y);
 	new_x = current_x;
 	new_y = current_y;
 	if (axis == 'x')
@@ -74,5 +74,5 @@ void	ft_move(t_game *game, char axis, int dir)
 		|| new_y >= game->size_y || new_x >= game->size_x)
 		return ;
 	if (game->table[new_y][new_x] != '1')
-		ft_modify_map(game, new_x, new_y);
+		modify_map(game, new_x, new_y);
 }
