@@ -76,7 +76,7 @@ void	render_map_item(t_game *g, int x, int y);
 
 /*#########  VERIF  #########*/
 int		character_verif(char *verif, t_count *map_count);
-int		game_size_verif(char *verif, int back_size);
+int		*game_size_verif(char *verif, int *back_size);
 int		map_closed(char *verif, int edge);
 int		is_start_or_end(int position, int total_lines);
 int		verif_item_doublon(t_count *map_count);
@@ -101,7 +101,7 @@ int		flood_fill_init(t_game *data);
 int		count_line(char *filepath);
 void	print_map(char **map);
 t_game	*copy_map(t_game *map);
-size_t	ft_strlen_map(const char *s);
+int	*ft_strlen_map(const char *s);
 
 /*#########  FREE  #########*/
 int		free_map(t_game *game);

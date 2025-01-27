@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:21:58 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 16:51:03 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/27 14:31:18 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ t_game	*copy_map(t_game *map)
 	return (map);
 }
 
-size_t	ft_strlen_map(const char *s)
+int	*ft_strlen_map(const char *s)
 {
-	int	nbr_string;
+	int	*nbr_string;
 	int	i;
 
 	nbr_string = 0;

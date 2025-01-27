@@ -6,23 +6,22 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:18:36 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 18:31:27 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/27 14:39:48 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_line(char *read, int size_verif, t_count *map_count, int is_start_end)
+int	check_line(char *read, int *size_verif,
+				t_count *map_count, int is_start_end)
 {
-	size_verif = game_size_verif(read, size_verif);
-	if (!character_verif(read, map_count) || size_verif == -1)
-	{
+	int	*result;
+
+	result = game_size_verif(read, size_verif);
+	if (!result || !character_verif(read, map_count))
 		return (0);
-	}
 	if (!map_closed(read, is_start_end))
-	{
 		return (0);
-	}
 	return (1);
 }
 
@@ -37,7 +36,7 @@ int	read_lines(int fd, int line_count, t_count *map_count)
 	read = get_next_line(fd);
 	while (read != NULL)
 	{
-		if (!check_line(read, size_verif, map_count,
+		if (!check_line(read, &size_verif, map_count,
 				is_start_or_end(i_read, line_count)))
 		{
 			free(read);
@@ -47,7 +46,6 @@ int	read_lines(int fd, int line_count, t_count *map_count)
 		read = get_next_line(fd);
 		i_read++;
 	}
-	free(read);
 	return (1);
 }
 

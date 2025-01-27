@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:36:14 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 18:37:04 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/27 14:36:11 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,18 @@ int	character_verif(char *verif, t_count *map_count)
 	return (1);
 }
 
-int	game_size_verif(char *verif, int back_size)
+int	*game_size_verif(char *verif, int *back_size)
 {
 	int	size;
 
-	size = ft_strlen_map(verif);
-	if (back_size == -1)
-		return (size);
-	if (size == back_size)
-		return (size);
-	else
-		return (-1);
+	size = ft_strlen(verif);
+	if (verif[size - 1] == '\n')
+		size--;
+	if (*back_size == -1)
+		*back_size = size;
+	else if (*back_size != size)
+		return (NULL);
+	return (back_size);
 }
 
 int	map_closed(char *verif, int edge)
