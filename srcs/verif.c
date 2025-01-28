@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:36:14 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/27 14:36:11 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/28 21:23:23 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,22 @@ int	*game_size_verif(char *verif, int *back_size)
 
 int	map_closed(char *verif, int edge)
 {
-	int	size;
 	int	i;
 
 	i = 0;
-	size = ft_strlen(verif) - 1;
-	while (verif[i])
+	while (verif[i] && verif[i] != '\n')
 	{
-		if (edge == 1 && verif[i] != '1')
+		if (edge == 1)
 		{
-			return (1);
+			if (verif[i] != '1')
+				return (0);
 		}
 		else if (edge == 0)
 		{
-			if (i == 0 || i == size - 1)
+			if (i == 0 || verif[i + 1] == '\n' || verif[i + 1] == '\0')
 			{
 				if (verif[i] != '1')
-				{
 					return (0);
-				}
 			}
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 20:16:54 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/25 23:39:29 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/28 22:09:45 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,29 @@ void	find_player(t_game *game, int *x, int *y)
 	}
 }
 
+void	find_exit(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->size_y)
+	{
+		x = 0;
+		while (x < game->size_x)
+		{
+			if (game->table[y][x] == 'E')
+			{
+				game->exit_x = x;
+				game->exit_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	modify_map(t_game *game, int new_x, int new_y)
 {
 	int	current_x;
@@ -35,9 +58,7 @@ void	modify_map(t_game *game, int new_x, int new_y)
 
 	find_player(game, &current_x, &current_y);
 	if (game->table[new_y][new_x] == 'C')
-	{
 		game->items_collected++;
-	}
 	else if (game->table[new_y][new_x] == 'E')
 	{
 		if (game->items_collected == game->total_items)
@@ -46,9 +67,12 @@ void	modify_map(t_game *game, int new_x, int new_y)
 			return ;
 		}
 		else
-			return ;
+			game->exit = 1;
 	}
-	game->table[current_y][current_x] = '0';
+	if (current_x == game->exit_x && current_y == game->exit_y)
+		game->table[current_y][current_x] = 'E';
+	else
+		game->table[current_y][current_x] = '0';
 	game->table[new_y][new_x] = 'P';
 }
 

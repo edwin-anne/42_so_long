@@ -6,7 +6,7 @@
 /*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 21:09:55 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/25 23:13:37 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/28 22:10:44 by Edwin ANNE       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ int	ft_key_hook(int keycode, t_game *game)
 
 int	start_game(t_game *game)
 {
+	game->exit = 0;
+	game->exit_x = 0;
+	game->exit_y = 0;
 	if (!game)
 		return (1);
 	game->move_counter = 0;
 	game->total_items = count_collectibles(game);
+	game->items_collected = 0;
+	find_exit(game);
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (1);

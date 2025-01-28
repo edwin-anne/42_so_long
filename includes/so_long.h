@@ -20,7 +20,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
 
 # define KEY_EXIT			17
 # define KEY_ESC        	65307
@@ -55,6 +54,9 @@ typedef struct s_game
 	int		exit_reached;
 	int		total_items;
 	int		move_counter;
+	int		exit_y;
+	int		exit_x;
+	int		exit;
 }	t_game;
 
 typedef struct s_count
@@ -101,7 +103,7 @@ int		flood_fill_init(t_game *data);
 int		count_line(char *filepath);
 void	print_map(char **map);
 t_game	*copy_map(t_game *map);
-int	*ft_strlen_map(const char *s);
+int		*ft_strlen_map(const char *s);
 
 /*#########  FREE  #########*/
 int		free_map(t_game *game);
@@ -113,5 +115,6 @@ void	move(t_game *game, char axis, int dir);
 void	modify_map(t_game *game, int new_x, int new_y);
 void	player_position(t_game *data);
 void	write_status(t_game *game);
+void	find_exit(t_game *game);
 
 #endif
