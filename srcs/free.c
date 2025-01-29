@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 20:03:47 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/20 18:08:42 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/29 08:33:58 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int	free_exit(t_game *game)
 	i = 0;
 	free_map(game);
 	free_map_table(game, i);
+	free(game);
 	exit(0);
 }

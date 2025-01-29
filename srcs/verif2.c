@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Edwin ANNE <eanne@student.42lehavre.fr>    +#+  +:+       +#+        */
+/*   By: eanne <eanne@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:18:36 by Edwin ANNE        #+#    #+#             */
-/*   Updated: 2025/01/28 21:24:39 by Edwin ANNE       ###   ########.fr       */
+/*   Updated: 2025/01/29 08:30:51 by eanne            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	read_lines(int fd, int line_count, t_count *map_count)
 		if (!check_line(read, &size_verif, map_count,
 				is_start_or_end(i_read, line_count)))
 		{
+			close(fd);
 			free(read);
 			return (0);
 		}
@@ -46,6 +47,7 @@ int	read_lines(int fd, int line_count, t_count *map_count)
 		read = get_next_line(fd);
 		i_read++;
 	}
+	close(fd);
 	return (1);
 }
 
